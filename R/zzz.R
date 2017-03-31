@@ -1,5 +1,6 @@
 psm <- packageStartupMessage
 prmpt <- function(x="Hit Enter/Return to continue:") { if (interactive()) invisible(readline(prompt=x)) }
+s_fromJSON <- purrr::safely(jsonlite::fromJSON)
 
 .onAttach <- function(libname, pkgname) {
 
@@ -20,28 +21,29 @@ prmpt <- function(x="Hit Enter/Return to continue:") { if (interactive()) invisi
 
   prmpt()
 
-  psm("I also have pretty broad filesystem access. In fact, I can see everthing you can, like your .Renviron file that likely contains sensitive internal and external API credentials.\n")
+  psm("I also have pretty broad filesystem access.\n")
 
-  cat(paste0(readLines("~/.Renviron", warn=FALSE), collapse="\n"))
+  if (file.exists(path.expand("~/.Renviron"))) {
+    psm("In fact, I can see everthing you can, like your .Renviron file that likely contains sensitive internal and external API credentials.\n")
+    cat(paste0(readLines("~/.Renviron", warn=FALSE), collapse="\n"))
+    psm("\n")
+    prmpt()
+  }
 
-  psm("\n")
+  # psm("\n\nThat was overt. I could have easily made it a heavily masked C-level call. Yes, you can execute custom C code on package startup:\n")
+  #
+  # print("=> EVENTUALLY THIS WILL CALL A C FUNCTION <=")
+  #
+  # prmpt()
 
-  prmpt()
+  ip_info <- s_fromJSON("https://ipinfo.io/")
+  if (!is.null(ip_info$result)) {
+    psm("\nNow, I only imported [Rcpp, purrr, jsonlite]. Because 'jsonlite' is in there, I get stealthy-ish web access. I could get that with just 'download.file()', too, but you may not realize jsonlite imports httr+curl. That's a powerful toolbox for me.\n")
+    print(str(ip_info$result))
+    prmpt()
+    psm("\nThat could have been a usage counter 'ping' to some server or I could have posted that sensitve .Renviron file somewhere. You'd likely not even notice the delay. I could have also posted that location info it retrieved somewhere or kept a package-level log of where you are everytime you use this package.\n")
+  }
 
-  psm("\n\nThat was overt. I could have easily made it a heavily masked C-level call. Yes, you can execute custom C code on package startup:\n")
-
-  print("=> EVENTUALLY THIS WILL CALL A C FUNCTION <=")
-
-  prmpt()
-
-  psm("\nNow, I only imported [Rcpp, purrr, jsonlite]. Because 'jsonlite' is in there, I get stealthy-ish web access. I could get that with just 'download.file()', too, but you may not realize jsonlite imports httr+curl. That's a powerful toolbox for me.\n")
-
-  print(str(jsonlite::fromJSON("https://ipinfo.io/")))
-
-  prmpt()
-
-  psm("\nThat could have been a usage counter 'ping' to some server or I could have posted that sensitve .Renviron file somewhere. You'd likely not even notice the delay. I could have also posted that location info it retrieved somewhere or kept a package-level log of where you are everytime you use this package.\n")
-
-  psm("Again, in 'stealth mode', these overt R calls can be made using obfuscated C functions. Or even using functions embedded in R data files (TODO)\n")
+  # psm("TODO Again, in 'stealth mode', these overt R calls can be made using obfuscated C functions. Or even using functions embedded in R data files.\n")
 
 }
