@@ -1,0 +1,20 @@
+---
+output: rmarkdown::github_document
+---
+
+`rpwnd` : The Most Benignly Malicious R Package on the Internet
+
+Provides examples of all the ways you can get 'pwnd' by R packages.
+
+WIP. Feel free to contribute.
+    
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("hrbrmstr/rpwnd")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+options(width=120)
+```
+

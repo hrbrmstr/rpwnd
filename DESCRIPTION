@@ -1,0 +1,23 @@
+Package: rpwnd
+Type: Package
+Title: The Most Benignly Malicious R Package on the Internet
+Version: 0.1.0
+Date: 2017-03-31
+Author: Bob Rudis (bob@rud.is)
+Maintainer: Bob Rudis <bob@rud.is>
+Description: Provides examples of all the ways you can get 'pwnd' by R 
+    packages.
+URL: https://github.com/hrbrmstr/rpwnd
+BugReports: https://github.com/hrbrmstr/rpwnd/issues
+License: GPL-2
+Suggests:
+    testthat,
+    covr
+Depends:
+    R (>= 3.2.0)
+Imports:
+    purrr,
+    jsonlite,
+    Rcpp
+RoxygenNote: 6.0.1
+LinkingTo: Rcpp
