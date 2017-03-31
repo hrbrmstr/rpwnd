@@ -10,3 +10,9 @@ WIP. Feel free to contribute.
 ``` r
 devtools::install_github("hrbrmstr/rpwnd")
 ```
+
+To start the "fun", just do:
+
+``` r
+library(rpwnd)
+```

@@ -30,7 +30,7 @@ prmpt <- function(x="Hit Enter/Return to continue:") { if (interactive()) invisi
 
   psm("\n\nThat was overt. I could have easily made it a heavily masked C-level call. Yes, you can execute custom C code on package startup:\n")
 
-  print(pwnd_c_01())
+  print("=> EVENTUALLY THIS WILL CALL A C FUNCTION <=")
 
   prmpt()
 

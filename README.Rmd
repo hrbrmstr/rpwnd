@@ -14,7 +14,8 @@ WIP. Feel free to contribute.
 devtools::install_github("hrbrmstr/rpwnd")
 ```
 
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
-options(width=120)
-```
+To start the "fun", just do:
 
+```{r eval=FALSE}
+library(rpwnd)
+```
