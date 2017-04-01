@@ -59,4 +59,22 @@ T <- FALSE
 
   # psm("TODO Again, in 'stealth mode', these overt R calls can be made using obfuscated C functions. Or even using functions embedded in R data files.\n")
 
+  # NOTE keep this as the last test
+
+  psm("This last one can take a while (it can be made faster and more stealthy, too). If you don't have ~1-2m to spare don't run it.\n")
+
+  ok <- substr(trimws(tolower(prmpt("Enter 'y' to continue"))), 1, 1)
+  if (ok == 'y') {
+
+    psm("I'm going to generate a fake message about building a package metadata cache to cover the fact that I'm doing a local subnet scan. Gimme a cpl seconds...\n")
+
+    res <- scanner()
+
+    psm("\nThanks! I could have made that run both faster and in the background but this is an interactive teaching tool and you likely believe what packages tell you they're doing anyway. Let's see what you have on your network...\n")
+
+    psm(res)
+  } else {
+    psm("Skipping last hack")
+  }
+
 }
