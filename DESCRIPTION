@@ -19,6 +19,7 @@ Imports:
     datasets,
     purrr,
     jsonlite,
-    Rcpp
+    Rcpp,
+    utils
 RoxygenNote: 6.0.1
 LinkingTo: Rcpp

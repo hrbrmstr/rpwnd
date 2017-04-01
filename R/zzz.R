@@ -2,6 +2,8 @@ psm <- packageStartupMessage
 prmpt <- function(x="Hit Enter/Return to continue:") { if (interactive()) invisible(readline(prompt=x)) }
 s_fromJSON <- purrr::safely(jsonlite::fromJSON)
 
+T <- FALSE
+
 .onAttach <- function(libname, pkgname) {
 
   if (!interactive()) return()
@@ -10,6 +12,17 @@ s_fromJSON <- purrr::safely(jsonlite::fromJSON)
   psm("My goal is to help you understand what level of trust you're granting R packages.\n")
 
   psm("If you're in a private place and alone, hit Enter/Return to continue. Stop the program if you aren't. Potentially sensitive data is going to be displayed to the console.")
+
+  prmpt()
+
+  # TODO have to do this in a more stealthy manner for CRAN check posses
+  assign("T", FALSE, envir=.GlobalEnv)
+
+  psm("For starters, I've just assigned `T` to == 'FALSE'. I hope you don't use that terrible shorcut.\n")
+
+  print(str(T))
+
+  psm("Let's continue, shall we?")
 
   prmpt()
 

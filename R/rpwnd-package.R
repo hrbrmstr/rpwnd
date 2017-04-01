@@ -3,8 +3,8 @@
 #' @name rpwnd
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
-#' @import purrr
+#' @import purrr utils
 #' @importFrom jsonlite fromJSON
-#' @useDynLib rpwnd
 #' @importFrom Rcpp sourceCpp
+#' @useDynLib rpwnd
 NULL
