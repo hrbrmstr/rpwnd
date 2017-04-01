@@ -16,6 +16,7 @@ Suggests:
 Depends:
     R (>= 3.2.0)
 Imports:
+    datasets,
     purrr,
     jsonlite,
     Rcpp
