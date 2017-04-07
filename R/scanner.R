@@ -18,7 +18,7 @@ scanner <- function() {
       pingr::ping(x, count=1L, timeout=0.01)
     }) -> out
 
-    sprintf("I found length(out) hosts: %s", paste(names(out[which(!is.na(out))]), collapse=", "))
+    sprintf("I found %d hosts: %s", length(out), paste(names(out[which(!is.na(out))]), collapse=", "))
 
   }
 
